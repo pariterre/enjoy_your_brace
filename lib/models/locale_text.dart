@@ -18,4 +18,6 @@ class LocaleText with ChangeNotifier {
   String get template => {'en': 'Template', 'fr': 'Canevas'}[language]!;
   String get title =>
       {'en': 'Enjoy Your Brace', 'fr': 'Aime ton corset'}[language]!;
+  String get temperature =>
+      {'en': 'Temperature', 'fr': 'Température'}[language]!;
 }

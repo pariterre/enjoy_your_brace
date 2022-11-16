@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => LocaleText(language: 'fr')),
         ChangeNotifierProvider(
-            create: (ctx) => Data(dataCollector: SimulatedDevice())),
+            create: (ctx) => AllData(dataCollector: SimulatedDevice())),
       ],
       child: MaterialApp(
         initialRoute: HomeScreen.route,

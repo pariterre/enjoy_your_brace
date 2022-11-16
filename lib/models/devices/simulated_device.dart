@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import './data.dart';
+import './data_point.dart';
 import './data_collection_device.dart';
 
 class SimulatedDevice extends DataCollectionDevice {
@@ -26,7 +26,7 @@ class SimulatedDevice extends DataCollectionDevice {
     } else {
       dataProvided.add(
           DataPoint(dataProvided.last.value + randomizer.nextDouble() * 2 - 1,
-              date: dataProvided.last.date.add(const Duration(hours: 12))),
+              date: dataProvided.last.date.add(const Duration(hours: 1))),
           notify: notify);
     }
     return true;
