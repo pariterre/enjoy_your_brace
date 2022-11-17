@@ -11,8 +11,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = DataList.of(context);
-    final device = data.dataCollector as SimulatedTemperatureDevice;
-    device.simulateData(context, 24 * 30);
+    (data.dataCollector as SimulatedTemperatureDevice)
+        .simulateData(24 * 30, dataList: data);
 
     return Scaffold(
       appBar: AppBar(

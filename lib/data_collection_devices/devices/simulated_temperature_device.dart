@@ -19,10 +19,14 @@ class SimulatedTemperatureDevice extends DataCollectionDevice {
   final double offset;
 
   void simulateData(
-    BuildContext? context,
     int numberOfHours, {
     DataList? dataList,
+    BuildContext? context,
   }) {
+    if (dataList == null && context == null) {
+      throw ArgumentError('either [dataList] or [context] must be provided');
+    }
+
     dataList = dataList ?? data(context!);
     dataList.clear(notify: false);
 

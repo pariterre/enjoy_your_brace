@@ -10,7 +10,7 @@ DataList prepareData(
       frequency: frequency, variability: variability, offset: offset);
 
   final data = DataList(dataCollector: device);
-  device.simulateData(null, numberOfHours, dataList: data);
+  device.simulateData(numberOfHours, dataList: data);
   return data;
 }
 
