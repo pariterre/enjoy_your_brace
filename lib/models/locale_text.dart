@@ -20,4 +20,10 @@ class LocaleText with ChangeNotifier {
       {'en': 'Enjoy Your Brace', 'fr': 'Aime ton corset'}[language]!;
   String get temperature =>
       {'en': 'Temperature', 'fr': 'Température'}[language]!;
+  String get mean => {'en': 'mean:', 'fr': 'moyenne :'}[language]!;
+  String get day => {'en': 'day', 'fr': 'jour'}[language]!;
+  String get meanWearingTime =>
+      {'en': 'Mean wearing time:', 'fr': 'Temps de port moyen :'}[language]!;
+  String get totalWearingTime =>
+      {'en': 'Total wearing time:', 'fr': 'Temps de port total :'}[language]!;
 }

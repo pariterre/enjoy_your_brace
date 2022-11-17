@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-import './all_data.dart';
+import '../data/data_list.dart';
 
 abstract class DataCollectionDevice {
-  const DataCollectionDevice();
+  const DataCollectionDevice(this.frequency);
 
-  AllData data(BuildContext context, {bool listen = false}) =>
-      AllData.of(context, listen: listen);
+  DataList data(BuildContext context, {bool listen = false}) =>
+      DataList.of(context, listen: listen);
+
+  ///
+  /// Data acquisition frequency in data per hour
+  final double frequency;
 
   ///
   /// This method fetches a new data point to the device, adds it to the data

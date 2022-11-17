@@ -1,15 +1,14 @@
 import 'package:enhanced_containers/enhanced_containers.dart';
 
-class DataPoint extends ItemSerializable {
+abstract class DataPoint extends ItemSerializable {
   final DateTime date;
   final double value;
 
   DataPoint(this.value, {DateTime? date}) : date = date ?? DateTime.now();
 
-  static DataPoint deserialize(map) {
-    return DataPoint(map['value'],
-        date: DateTime.fromMillisecondsSinceEpoch(map['date']));
-  }
+  DataPoint.deserialize(map)
+      : value = map['value'],
+        date = DateTime.fromMillisecondsSinceEpoch(map['date']);
 
   @override
   Map<String, dynamic> serializedMap() {
@@ -18,4 +17,8 @@ class DataPoint extends ItemSerializable {
       'value': value,
     };
   }
+
+  ///
+  /// This method interprets the data to evaluate if the scoliosis brace is on
+  bool get isBraceOn;
 }

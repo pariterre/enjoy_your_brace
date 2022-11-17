@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './models/devices/devices.dart';
+import 'data_collection_devices/data_collection_devices.dart';
 import './models/locale_text.dart';
 import './screens/home_screen.dart';
 
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => LocaleText(language: 'fr')),
         ChangeNotifierProvider(
-            create: (ctx) => AllData(dataCollector: SimulatedDevice())),
+            create: (ctx) =>
+                DataList(dataCollector: SimulatedTemperatureDevice(2))),
       ],
       child: MaterialApp(
         initialRoute: HomeScreen.route,

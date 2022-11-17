@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:graphic/graphic.dart';
 import 'package:intl/intl.dart';
 
-import '../all_data.dart';
+import '../data/data_list.dart';
 
 class GraphData extends StatelessWidget {
   const GraphData({
     super.key,
-    required this.width,
+    this.width,
     required this.height,
     this.title,
   });
 
   final Widget? title;
-  final double width;
+  final double? width;
   final double height;
 
   @override
@@ -24,10 +24,10 @@ class GraphData extends StatelessWidget {
       children: [
         if (title != null) title!,
         SizedBox(
-          width: width,
+          width: width ?? MediaQuery.of(context).size.width - 15,
           height: height,
           child: Chart(
-            data: AllData.of(context)
+            data: DataList.of(context)
                 .map((element) => element.serializedMap())
                 .toList(),
             variables: {
