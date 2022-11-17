@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (ctx) => LocaleText(language: 'fr')),
         ChangeNotifierProvider(
-            create: (ctx) =>
-                DataList(dataCollector: SimulatedTemperatureDevice(2))),
+            create: (ctx) => DataList(
+                dataCollector: SimulatedTemperatureDevice(frequency: 2))),
       ],
       child: MaterialApp(
         initialRoute: HomeScreen.route,

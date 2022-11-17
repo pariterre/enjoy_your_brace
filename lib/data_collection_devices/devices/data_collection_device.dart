@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/data_list.dart';
 
 abstract class DataCollectionDevice {
-  const DataCollectionDevice(this.frequency);
+  const DataCollectionDevice({required this.frequency});
 
   DataList data(BuildContext context, {bool listen = false}) =>
       DataList.of(context, listen: listen);
