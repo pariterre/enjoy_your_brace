@@ -16,10 +16,10 @@ class MoodDataPoint extends ItemSerializable {
   final MoodDataLevel autonomy;
 
   MoodDataPoint({
-    required this.emotion,
-    required this.comfort,
-    required this.humidity,
-    required this.autonomy,
+    this.emotion = MoodDataLevel.none,
+    this.comfort = MoodDataLevel.none,
+    this.humidity = MoodDataLevel.none,
+    this.autonomy = MoodDataLevel.none,
   });
 
   MoodDataPoint copyWith(
@@ -47,4 +47,15 @@ class MoodDataPoint extends ItemSerializable {
         comfort = MoodDataLevel.values[map['comfort'] as int],
         humidity = MoodDataLevel.values[map['humidty'] as int],
         autonomy = MoodDataLevel.values[map['autonomy'] as int];
+
+  bool get allMoodsAreSelected {
+    return emotion != MoodDataLevel.none &&
+        comfort != MoodDataLevel.none &&
+        humidity != MoodDataLevel.none &&
+        autonomy != MoodDataLevel.none;
+  }
+
+  @override
+  String toString() =>
+      'Emotion: $emotion, Comfort: $comfort, Humidity: $humidity, Autonony: $autonomy';
 }

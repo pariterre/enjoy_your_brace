@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'data_collection_devices/data_collection_devices.dart';
 import 'models/locale_text.dart';
+import 'models/theme.dart';
 import 'mood_data/mood_data.dart';
 import 'screens/home_screen.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         initialRoute: HomeScreen.route,
+        theme: enjoyYourBraceTheme,
         routes: {
           HomeScreen.route: (ctx) => const HomeScreen(),
         },

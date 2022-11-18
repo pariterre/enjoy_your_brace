@@ -16,7 +16,7 @@ class LocaleText with ChangeNotifier {
   }
 
   String get template => {'en': 'Template', 'fr': 'Canevas'}[language]!;
-  
+
   String get title =>
       {'en': 'Enjoy Your Brace', 'fr': 'Aime ton corset'}[language]!;
   String get submit => {'en': 'Submit', 'fr': 'Soumettre'}[language]!;
@@ -30,6 +30,12 @@ class LocaleText with ChangeNotifier {
   String get totalWearingTime =>
       {'en': 'Total wearing time:', 'fr': 'Temps de port total :'}[language]!;
 
+  String get selectMood =>
+      {'en': 'How is your mood?', 'fr': 'Comment te sens-tu?'}[language]!;
+  String get feelingToday => {
+        'en': 'How are you feeling today?',
+        'fr': 'Comment te sens-tu ajourd\'hui?'
+      }[language]!;
   String get emotion => {'en': 'Emotion', 'fr': 'Émotion'}[language]!;
   String get comfort => {'en': 'Comfort', 'fr': 'Confort'}[language]!;
   String get humidity => {'en': 'Humidity', 'fr': 'Humidité'}[language]!;

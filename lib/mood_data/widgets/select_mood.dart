@@ -4,19 +4,16 @@ import 'package:enjoy_your_brace/mood_data/mood_data_point_list.dart';
 import 'package:flutter/material.dart';
 
 class SelectMood extends StatefulWidget {
-  const SelectMood({super.key});
+  const SelectMood({super.key, this.onSubmit});
+
+  final Function(MoodDataPoint)? onSubmit;
 
   @override
   State<SelectMood> createState() => _SelectMoodState();
 }
 
 class _SelectMoodState extends State<SelectMood> {
-  MoodDataPoint mood = MoodDataPoint(
-    emotion: MoodDataLevel.none,
-    comfort: MoodDataLevel.none,
-    humidity: MoodDataLevel.none,
-    autonomy: MoodDataLevel.none,
-  );
+  MoodDataPoint mood = MoodDataPoint();
 
   void _setEmotion(MoodDataLevel level) {
     mood = mood.copyWith(emotion: level);
@@ -40,24 +37,22 @@ class _SelectMoodState extends State<SelectMood> {
 
   void _submit() {
     MoodDataPointList.of(context, listen: false).add(mood);
+    if (widget.onSubmit != null) widget.onSubmit!(mood);
+
+    mood = MoodDataPoint();
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final sideSize = MediaQuery.of(context).size.width / 6;
+    final sideSize = MediaQuery.of(context).size.width / 10;
     final texts = LocaleText.of(context);
-    final moodList = MoodDataPointList.of(context);
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (moodList.isNotEmpty)
-          Text('Dernier état :\n'
-              '\t\t${texts.emotion} : ${moodList.last.emotion},\n'
-              '\t\t${texts.comfort} : ${moodList.last.comfort},\n'
-              '\t\t${texts.humidity} : ${moodList.last.humidity},\n'
-              '\t\t${texts.autonony} : ${moodList.last.autonomy}'),
-        if (moodList.isNotEmpty) const SizedBox(height: 10),
+        Text(texts.feelingToday),
+        const SizedBox(height: 20),
         SelectMoodLevel(
           title: texts.emotion,
           sideSize: sideSize,
@@ -85,12 +80,12 @@ class _SelectMoodState extends State<SelectMood> {
           onTap: _setAutonomy,
           current: mood.autonomy,
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 40),
         ElevatedButton(
-          onPressed: _submit,
+          onPressed: mood.allMoodsAreSelected ? _submit : null,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.yellow,
-            foregroundColor: Colors.black,
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            foregroundColor: Theme.of(context).colorScheme.onSecondary,
             elevation: 2,
           ),
           child: Padding(
@@ -128,7 +123,7 @@ class _SelectMoodLevelState extends State<SelectMoodLevel> {
       children: [
         Text(
           widget.title,
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         const SizedBox(height: 8),
         Row(
@@ -136,37 +131,71 @@ class _SelectMoodLevelState extends State<SelectMoodLevel> {
           children: [
             _Selector(
               BoxDecoration(
-                color: Colors.green.withAlpha(
-                    widget.current == MoodDataLevel.excellent ? 255 : 50),
+                image: DecorationImage(
+                  image: const AssetImage('assets/excellent.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withAlpha(
+                        widget.current == MoodDataLevel.excellent ? 255 : 70),
+                    BlendMode.modulate,
+                  ),
+                ),
               ),
               sideSize: widget.sideSize,
               onTap: () => widget.onTap(MoodDataLevel.excellent),
             ),
             _Selector(
               BoxDecoration(
-                  color: Colors.teal.withAlpha(
-                      widget.current == MoodDataLevel.good ? 255 : 50)),
+                image: DecorationImage(
+                  image: const AssetImage('assets/good.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withAlpha(
+                        widget.current == MoodDataLevel.good ? 255 : 70),
+                    BlendMode.modulate,
+                  ),
+                ),
+              ),
               sideSize: widget.sideSize,
               onTap: () => widget.onTap(MoodDataLevel.good),
             ),
             _Selector(
               BoxDecoration(
-                  color: Colors.yellow.withAlpha(
-                      widget.current == MoodDataLevel.medium ? 255 : 50)),
+                image: DecorationImage(
+                  image: const AssetImage('assets/medium.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withAlpha(
+                        widget.current == MoodDataLevel.medium ? 255 : 70),
+                    BlendMode.modulate,
+                  ),
+                ),
+              ),
               sideSize: widget.sideSize,
               onTap: () => widget.onTap(MoodDataLevel.medium),
             ),
             _Selector(
               BoxDecoration(
-                  color: Colors.orange.withAlpha(
-                      widget.current == MoodDataLevel.poor ? 255 : 50)),
+                image: DecorationImage(
+                  image: const AssetImage('assets/poor.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withAlpha(
+                        widget.current == MoodDataLevel.poor ? 255 : 70),
+                    BlendMode.modulate,
+                  ),
+                ),
+              ),
               sideSize: widget.sideSize,
               onTap: () => widget.onTap(MoodDataLevel.poor),
             ),
             _Selector(
               BoxDecoration(
-                  color: Colors.red.withAlpha(
-                      widget.current == MoodDataLevel.veryBad ? 255 : 50)),
+                image: DecorationImage(
+                  image: const AssetImage('assets/veryBad.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.white.withAlpha(
+                        widget.current == MoodDataLevel.veryBad ? 255 : 70),
+                    BlendMode.modulate,
+                  ),
+                ),
+              ),
               sideSize: widget.sideSize,
               onTap: () => widget.onTap(MoodDataLevel.veryBad),
             ),
