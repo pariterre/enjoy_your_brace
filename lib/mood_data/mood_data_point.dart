@@ -1,6 +1,7 @@
 import 'package:enhanced_containers/enhanced_containers.dart';
 
 enum MoodDataLevel {
+  none,
   veryBad,
   poor,
   medium,
