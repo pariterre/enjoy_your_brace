@@ -1,7 +1,8 @@
-import 'package:enjoy_your_brace/models/locale_text.dart';
-import 'package:enjoy_your_brace/mood_data/mood_data_point.dart';
-import 'package:enjoy_your_brace/mood_data/mood_data_point_list.dart';
 import 'package:flutter/material.dart';
+
+import '../mood_data_point.dart';
+import '../mood_data_point_list.dart';
+import '../../models/locale_text.dart';
 
 class SelectMood extends StatefulWidget {
   const SelectMood({super.key, this.onSubmit});

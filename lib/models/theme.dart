@@ -7,7 +7,7 @@ ThemeData get enjoyYourBraceTheme {
     colorScheme: const ColorScheme(
       brightness: Brightness.light,
       primary: Color.fromARGB(255, 114, 184, 212),
-      onPrimary: Colors.black,
+      onPrimary: Colors.white,
       secondary: Colors.amber,
       onSecondary: Colors.black,
       error: Colors.red,
