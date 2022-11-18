@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data_collection_devices/data_collection_devices.dart';
 import '../models/locale_text.dart';
+import '../mood_data/widgets/select_mood.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,6 +31,8 @@ class HomeScreen extends StatelessWidget {
               '(${LocaleText.of(context).mean} '
               '${data.meanWearingTimePerDay.toStringAsFixed(1)}h/${LocaleText.of(context).day})',
             ),
+            const SizedBox(height: 50),
+            const SelectMood(),
           ],
         ),
       ),
