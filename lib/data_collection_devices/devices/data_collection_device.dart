@@ -10,10 +10,10 @@ abstract class DataCollectionDevice {
 
   ///
   /// Data acquisition frequency in data per hour
-  final double frequency;
+  final int frequency;
 
   ///
   /// This method fetches a new data point to the device, adds it to the data
   /// list and returns if it was a success or not.
-  Future<bool> fetchNewDataPoint(BuildContext context, {notify = false});
+  Future<bool> fetchData(BuildContext context, {notify = false});
 }

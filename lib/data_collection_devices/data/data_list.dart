@@ -46,7 +46,8 @@ class DataList extends ListProvided<DataPoint> {
 
   ///
   /// Returns the mean wearing time per day of the scoliosis brace
-  double get meanWearingTimePerDay =>
-      totalWearingTime /
-      (latest.date.difference(earliest.date).inHours.toDouble() / 24);
+  double get meanWearingTimePerDay => isEmpty
+      ? 0
+      : totalWearingTime /
+          (latest.date.difference(earliest.date).inHours.toDouble() / 24);
 }

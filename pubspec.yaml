@@ -14,6 +14,11 @@ dependencies:
   enhanced_containers: ^0.1.0
   graphic: ^1.0.0
   intl: ^0.17.0
+  blue_maestro_ble: ^0.1.0
+
+dependency_overrides:
+  blue_maestro_ble:
+    path: ./external/blue_maestro_ble
 
 dev_dependencies:
   flutter_test:

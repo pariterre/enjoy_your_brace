@@ -12,7 +12,8 @@ class MoodPie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final texts = LocaleText.of(context);
-    final data = DataList.of(context);
+    final data = DataList.of(context, listen: true);
+    data.dataCollector.fetchData(context);
 
     return Container(
       width: MediaQuery.of(context).size.width,
