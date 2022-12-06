@@ -1,16 +1,19 @@
 import 'package:enjoy_your_brace/data_collection_devices/data_collection_devices.dart';
 import 'package:test/test.dart';
 
-DataList prepareData(
-    {required double frequency,
-    required double variability,
-    required double offset,
-    required int numberOfHours}) {
+DataList prepareData({
+  required int frequency,
+  required double variability,
+  required double offset,
+  required int numberOfHours,
+}) {
   final device = SimulatedTemperatureDevice(
-      frequency: frequency, variability: variability, offset: offset);
+      frequency: frequency,
+      variability: variability,
+      numberOfSimulatedHours: numberOfHours);
 
   final data = DataList(dataCollector: device);
-  device.simulateData(numberOfHours, dataList: data);
+  device.simulateData(data, offset: offset);
   return data;
 }
 
