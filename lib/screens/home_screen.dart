@@ -11,12 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final texts = LocaleText.of(context);
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text(texts.title),
-      ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(

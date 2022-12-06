@@ -70,6 +70,7 @@ class _PiePainter extends CustomPainter {
         ..color = Colors.black
         ..style = PaintingStyle.fill;
 
+      canvas.save();
       canvas.translate(radius, radius);
       canvas.rotate(
           targetAngle! * pieSize * colors.length + startingAngle - pi / 2);

@@ -20,7 +20,7 @@ class MoodPie extends StatelessWidget {
       decoration: const BoxDecoration(color: Colors.purple),
       child: Column(
         children: [
-          const SizedBox(height: 40),
+          const SizedBox(height: 100),
           Transform.rotate(
             angle: -pi / 20,
             child: Container(
@@ -65,7 +65,7 @@ class MoodPie extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 50),
         ],
       ),
     );
