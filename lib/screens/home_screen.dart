@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../models/locale_text.dart';
 import '../widgets/mood_pie.dart';
 import '../widgets/mood_questionnaire.dart';
 

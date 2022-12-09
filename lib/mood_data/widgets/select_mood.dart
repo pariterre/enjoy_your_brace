@@ -46,7 +46,7 @@ class _SelectMoodState extends State<SelectMood> {
 
   @override
   Widget build(BuildContext context) {
-    final sideSize = MediaQuery.of(context).size.width / 10;
+    final sideSize = MediaQuery.of(context).size.width / 12;
     final texts = LocaleText.of(context);
 
     return Column(
@@ -131,74 +131,34 @@ class _SelectMoodLevelState extends State<SelectMoodLevel> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _Selector(
-              BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/excellent.png'),
-                  colorFilter: ColorFilter.mode(
-                    Colors.white.withAlpha(
-                        widget.current == MoodDataLevel.excellent ? 255 : 70),
-                    BlendMode.modulate,
-                  ),
-                ),
-              ),
-              sideSize: widget.sideSize,
-              onTap: () => widget.onTap(MoodDataLevel.excellent),
-            ),
-            _Selector(
-              BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/good.png'),
-                  colorFilter: ColorFilter.mode(
-                    Colors.white.withAlpha(
-                        widget.current == MoodDataLevel.good ? 255 : 70),
-                    BlendMode.modulate,
-                  ),
-                ),
-              ),
-              sideSize: widget.sideSize,
-              onTap: () => widget.onTap(MoodDataLevel.good),
-            ),
-            _Selector(
-              BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/medium.png'),
-                  colorFilter: ColorFilter.mode(
-                    Colors.white.withAlpha(
-                        widget.current == MoodDataLevel.medium ? 255 : 70),
-                    BlendMode.modulate,
-                  ),
-                ),
-              ),
-              sideSize: widget.sideSize,
-              onTap: () => widget.onTap(MoodDataLevel.medium),
-            ),
-            _Selector(
-              BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/poor.png'),
-                  colorFilter: ColorFilter.mode(
-                    Colors.white.withAlpha(
-                        widget.current == MoodDataLevel.poor ? 255 : 70),
-                    BlendMode.modulate,
-                  ),
-                ),
-              ),
-              sideSize: widget.sideSize,
-              onTap: () => widget.onTap(MoodDataLevel.poor),
-            ),
-            _Selector(
-              BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('assets/veryBad.png'),
-                  colorFilter: ColorFilter.mode(
-                    Colors.white.withAlpha(
-                        widget.current == MoodDataLevel.veryBad ? 255 : 70),
-                    BlendMode.modulate,
-                  ),
-                ),
-              ),
-              sideSize: widget.sideSize,
+              const AssetImage('assets/veryBad.png'),
               onTap: () => widget.onTap(MoodDataLevel.veryBad),
+              isSelected: widget.current == MoodDataLevel.veryBad,
+              sideSize: widget.sideSize,
+            ),
+            _Selector(
+              const AssetImage('assets/poor.png'),
+              onTap: () => widget.onTap(MoodDataLevel.poor),
+              isSelected: widget.current == MoodDataLevel.poor,
+              sideSize: widget.sideSize,
+            ),
+            _Selector(
+              const AssetImage('assets/medium.png'),
+              onTap: () => widget.onTap(MoodDataLevel.medium),
+              isSelected: widget.current == MoodDataLevel.medium,
+              sideSize: widget.sideSize,
+            ),
+            _Selector(
+              const AssetImage('assets/good.png'),
+              onTap: () => widget.onTap(MoodDataLevel.good),
+              isSelected: widget.current == MoodDataLevel.good,
+              sideSize: widget.sideSize,
+            ),
+            _Selector(
+              const AssetImage('assets/excellent.png'),
+              onTap: () => widget.onTap(MoodDataLevel.excellent),
+              isSelected: widget.current == MoodDataLevel.excellent,
+              sideSize: widget.sideSize,
             ),
           ],
         ),
@@ -209,22 +169,32 @@ class _SelectMoodLevelState extends State<SelectMoodLevel> {
 
 class _Selector extends StatelessWidget {
   const _Selector(
-    this.boxDecoration, {
+    this.image, {
     Key? key,
-    required this.sideSize,
     required this.onTap,
+    required this.sideSize,
+    required this.isSelected,
   }) : super(key: key);
 
-  final double sideSize;
-  final BoxDecoration boxDecoration;
+  final AssetImage image;
   final Function() onTap;
+  final double sideSize;
+  final bool isSelected;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: boxDecoration,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: image,
+            colorFilter: ColorFilter.mode(
+              Colors.white.withAlpha(isSelected ? 255 : 70),
+              BlendMode.modulate,
+            ),
+          ),
+        ),
         height: sideSize,
         width: sideSize,
       ),
